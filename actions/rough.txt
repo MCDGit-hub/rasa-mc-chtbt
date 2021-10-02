@@ -1,0 +1,57 @@
+#/// 19-09-21 | from = actions.py | method = ActionGetDocReq | reason = replaced
+#        if service_name in document_req_dat.keys():
+#            if (sub_category == 'NONE' or sub_category == '') and license_update_type in document_req_dat[service_name].keys():
+#                documents_required = document_req_dat[service_name][license_update_type]
+#            elif sub_category != 'NONE': #in case of vtl, that has document req by trade types
+#                if sub_category in document_req_dat[service_name].keys():
+#                    if license_update_type in document_req_dat[service_name][sub_category].keys():
+#                        documents_required = document_req_dat[service_name][sub_category][license_update_type]
+#                    else:
+#                        response_msg = "Couldn't find {} in Licence Updating Types of {}. Please make sure you have typed the name correctly".format(license_update_type, service_name)
+#                        return dispatcher.utter_message(text=response_msg)
+#                else:
+#                    response_msg = "Couldn't find {} in Trade Types of {}. Please make sure you have typed the name correctly".format(sub_category, service_name)
+#                    return dispatcher.utter_message(text=response_msg)
+#            else:
+#                response_msg = "Couldn't find {} in Licence Updating Types of {}. Please make sure you have typed the name correctly".format(license_update_type, service_name)
+ #               return dispatcher.utter_message(text=response_msg)
+ #       else:
+#            response_msg = "Couldn't find {} in our Services. Please make sure you have typed the name correctly.".format(service_name)
+#            return dispatcher.utter_message(text=response_msg)
+
+#        print(documents_required)
+
+#        if(documents_required != None):
+ #           document_req_str = ""
+  #          idx = 1
+   #         for doc in documents_required:
+    #            document_req_str+= str(idx)+". "+doc+"\n"
+     #           idx+=1
+      #      response_msg = "Following documents are required for:- \n\n • Licence Type : {}\n • Service : {}\n • Trade Category : {}\n\n{}".format(license_update_type, service_name, sub_category, document_req_str)
+       # else:
+        #    response_msg = "Couldn't find Required Documents for {} in {}. Please make sure you have typed the name correctly.".format(license_update_type,service_name)
+
+
+- story: apply for licence path 1
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: apply_for_license
+      entities:
+      - service_type: GTL
+    - action: action_get_steps_to_apply_licence
+    - action: utter_did_that_help
+    - intent: affirm
+    - action: utter_satisfiedres
+
+- story: apply for licence path 1.1
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: apply_for_license
+      entities:
+      - service_type: GTL
+    - action: action_get_steps_to_apply_licence
+    - action: utter_did_that_help
+    - intent: deny
+    - action: utter_unsatisfiedres

@@ -1,0 +1,159 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - namaste
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: about_service
+  examples: |
+    - what's [GTL](service_type)
+    - what is [GTL](service_type)
+    - what do you mean by [GTL](service_type)
+    - can you please tell me about a service?
+    - can you give information about a service?
+- intent: services
+  examples: |
+    - [GTL](service_type)
+    - [PTR](service_type)
+    - [HTL](service_type)
+    - [FTL](service_type)
+    - [VTL](service_type)
+- intent: user_registration
+  examples: |
+    - how to register?
+    - how to register myself?
+    - what to do for registration?
+    - how do i register myself?
+    - what is the registration process?
+- intent: about_trade_categories
+  examples: |
+    - which trade categories i can apply for?
+    - can you tell me about the trade categories?
+    - what trade categories are available in [GTL](service_type)
+    - tell me about the trade categories in [GTL](service_type)
+- intent: license_updating_types
+  examples: |
+    - [NEW](license_update)
+    - [SURRENDER](license_update)
+    - [RENEWAL](license_update)
+    - [AMENDMENT](license_update)
+
+- intent: sub_service_category
+  examples: |
+    - [MEAT SHOP](sub_category)
+    - [meat shop](sub_category)
+    - [HORSE BUGGY](sub_category)
+    - [MEAT PROCESSING UNIT](sub_category)
+    - [meat processing unit](sub_category)
+    - [CATTLE DAIRY FARM](sub_category)
+    - [cattle dairy farm](sub_category)
+    - [NONE](sub_category)
+    - [CONFORMING INDUSTRIAL AREA](sub_category)
+    - [conforming industrial area](sub_category)
+    - [DDA/DSIDC/DI BUILT-UP AUCTION/ALOTTED SHEDS](sub_category)
+    - [DSIDC](sub_category)
+    - [DDA](sub_category)
+    - [DI BUILT-UP AUCTION](sub_category)
+    - [ALOTTED SHEDS](sub_category)
+    - [INDUSTRIES OUTSIDE INDUSTRIAL AREA](sub_category)
+    - [industries outside industrial area](sub_category)
+    - [HOUSEHOLD CATEGORY](sub_category)
+    - [LOCAL COMMERCIAL CATEGORY](sub_category)
+    - [local commercial category](sub_category)
+
+- intent: document_requirement_info
+  examples: |
+    - what are the documents required for [NEW](license_update) license in [GTL](service_type)?
+    - [NEW](license_update) license document requirements?
+    - what documents are needed for [AMENDMENT](license_update) of license in [GTL](service_type)?
+    - documents required for [AMENDMENT](license_update) of license in [GTL](service_type)?
+    - required documents for [AMENDMENT](license_update) of license?
+    - documents to be submitted for [AMENDMENT](license_update) of license?
+
+- intent: apply_for_license
+  examples: |
+    - how to apply for [GTL](service_type)?
+    - what is the process of applying for a license?
+    - help me apply for a license?
+    - what do i have to do for [GTL](service_type) license?
+    - [GTL](service_type) application?

@@ -1,0 +1,144 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- mood_great:
+    use_entities: true
+- mood_unhappy:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- about_service:
+    use_entities: true
+- services:
+    use_entities: true
+- user_registration:
+    use_entities: true
+- about_trade_categories:
+    use_entities: true
+- document_requirement_info:
+    use_entities: true
+- license_updating_types:
+    use_entities: true
+- sub_service_category:
+    use_entities: true
+- apply_for_license:
+    use_entities: true
+entities:
+- service_type
+- license_update
+- sub_category
+slots:
+  service_type:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  license_update:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  sub_category:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+responses:
+  utter_service_name:
+  - buttons:
+    - payload: GTL
+      title: GTL (Gen. Trade / Storage Licence)
+    - payload: VTL
+      title: VTL (Veterinary Licence)
+    - payload: HTL
+      title: HTL (Health Trade Licence)
+    - payload: FTL
+      title: FTL (Factory Licence)
+    text: Please state the name of the service eg. **HTL**,**VTL** etc.
+  utter_license_types:
+  - buttons:
+    - payload: NEW
+      title: New Licence Issuance
+    - payload: AMENDMENT
+      title: Amendment of Licence
+    - payload: RENEWAL
+      title: Renewal of Licence
+    - payload: SURRENDER
+      title: Surrender of Licence
+    text: Please state the name of Licence Type eg. **New**, **Amendment** etc.
+  utter_greet:
+  - text: Hi! I am a chatbot built by **Municipal Corporation, Delhi**. How may i help you?
+  utter_select_trade_cat:
+  - buttons:
+    - payload: None
+      title: None
+    text: Please state the name of Trade Type eg. **Meat Shop**, **Conforming Industrial Area** etc. Say '**NONE**' if not any.
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - buttons:
+    - payload: Yes
+      title: Yes
+    - payload: No
+      title: No
+    text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_icanhelp:
+  - text: I can help you with that.
+  utter_servicespagelink:
+  - text: Please redirect to [https://mcdonline.nic.in/sdmcportal/service](https://mcdonline.nic.in/sdmcportal/service)
+  utter_selectservice:
+  - text: 'Select the type of service you would like to avail. for example: Gen. Trade / Storage Licence (**GTL**) etc.'
+  utter_regiteredornot:
+  - buttons:
+    - payload: Yes
+      title: Yes
+    - payload: No
+      title: No
+    text: Have you registered yourself before? Please say **Yes** or **No**.
+  utter_regiteredyes:
+  - text: |-
+      *Okay then, please follow the following steps:*
+      - **Step 1**: Enter your registered phone number in the first text field.
+      - **Step 2**: Click on generate OTP. 
+      - **Step 3**: Now you will receive a 6-digit OTP to your registered mobile number.
+      - **Step 4**: Enter the 6-digit OTP in second text field and click on login.
+      **You will now be redirected to service homepage.**
+  utter_registeredno:
+  - text: |-
+      *Okay then, please follow the following steps:*
+
+      - **Step 1**: Click on “New User Click Here for Signup / Registration” located below the login button.
+      - **Step 2**: Enter the required details and click on submit button.
+      - **Step 3**: You will be redirected to the login page. Now enter the registered mobile number and click on generate OTP.
+      - **Step 4**: Enter the received 6-digit OTP and click on login button.
+      **Please Note:- You have to use the provided mobile number to login in future.**
+  utter_satisfiedres:
+  - text: I'm glad it helped.
+  utter_unsatisfiedres:
+  - text: I am sorry for being unable to help. I am currently new and learning. Please call the following number | **1800-100-3508** | to let our support team help you out in solving your problem. Thank You.
+actions:
+- action_get_service_about
+- action_get_trade_categories
+- action_get_document_requirements
+- action_get_steps_to_apply_licence
+forms: {}
+e2e_actions: []

@@ -1,0 +1,553 @@
+version: "2.0"
+stories:
+- story: about service info path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: about_service
+    entities:
+    - service_type: GTL
+  - action: action_get_service_about
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_unsatisfiedres
+- story: about service info path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: about_service
+    entities:
+    - service_type: GTL
+  - action: action_get_service_about
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_satisfiedres
+- story: about service info path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: about_service
+  - action: utter_service_name
+  - intent: services
+    entities:
+    - service_type: GTL
+  - action: action_get_service_about
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_unsatisfiedres
+- story: about service info path 2.1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: about_service
+  - action: utter_service_name
+  - intent: services
+    entities:
+    - service_type: GTL
+  - action: action_get_service_about
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_satisfiedres
+- story: user registration path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: user_registration
+  - action: utter_icanhelp
+  - action: utter_servicespagelink
+  - action: utter_selectservice
+  - action: utter_regiteredornot
+  - intent: affirm
+  - action: utter_regiteredyes
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_unsatisfiedres
+- story: user registration path 1.1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: user_registration
+  - action: utter_icanhelp
+  - action: utter_servicespagelink
+  - action: utter_selectservice
+  - action: utter_regiteredornot
+  - intent: affirm
+  - action: utter_regiteredyes
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_satisfiedres
+- story: user registration path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: user_registration
+  - action: utter_icanhelp
+  - action: utter_servicespagelink
+  - action: utter_selectservice
+  - action: utter_regiteredornot
+  - intent: deny
+  - action: utter_registeredno
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_unsatisfiedres
+- story: user registration path 2.1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: user_registration
+  - action: utter_icanhelp
+  - action: utter_servicespagelink
+  - action: utter_selectservice
+  - action: utter_regiteredornot
+  - intent: deny
+  - action: utter_registeredno
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_satisfiedres
+- story: about trade info path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: about_trade_categories
+  - action: utter_service_name
+  - intent: services
+    entities:
+    - service_type: GTL
+  - action: action_get_trade_categories
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_satisfiedres
+- story: about trade info path 1.1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: about_trade_categories
+  - action: utter_service_name
+  - intent: services
+    entities:
+    - service_type: GTL
+  - action: action_get_trade_categories
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_unsatisfiedres
+- story: about trade info path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: about_trade_categories
+    entities:
+    - service_type: GTL
+  - action: action_get_trade_categories
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_satisfiedres
+- story: about trade info path 2.1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: about_trade_categories
+    entities:
+    - service_type: GTL
+  - action: action_get_trade_categories
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_unsatisfiedres
+- story: document req info path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: document_requirement_info
+    entities:
+    - license_update: NEW
+  - action: utter_service_name
+  - intent: services
+    entities:
+    - service_type: GTL
+  - action: utter_select_trade_cat
+  - intent: sub_service_category
+    entities:
+    - sub_category: MEAT SHOP
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_satisfiedres
+- story: document req info path 1.1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: document_requirement_info
+    entities:
+    - license_update: NEW
+  - action: utter_service_name
+  - intent: services
+    entities:
+    - service_type: GTL
+  - action: utter_select_trade_cat
+  - intent: sub_service_category
+    entities:
+    - sub_category: MEAT SHOP
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_unsatisfiedres
+- story: document req info path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: document_requirement_info
+    entities:
+    - license_update: NEW
+    - service_type: GTL
+  - action: utter_select_trade_cat
+  - intent: sub_service_category
+    entities:
+    - sub_category: MEAT SHOP
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_satisfiedres
+- story: document req info path 2.1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: document_requirement_info
+    entities:
+    - license_update: NEW
+    - service_type: GTL
+  - action: utter_select_trade_cat
+  - intent: sub_service_category
+    entities:
+    - sub_category: MEAT SHOP
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_unsatisfiedres
+- story: Story from Conversation ID 45f6e0791a834b9b8cedb355ff16ab57
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - slot_was_set:
+    - service_type: ftl
+  - intent: document_requirement_info
+    entities:
+    - license_update: new
+    - service_type: ftl
+  - action: utter_select_trade_cat
+  - intent: sub_service_category
+    entities:
+    - sub_category: local commercial category
+  - slot_was_set:
+    - sub_category: local commercial category
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_satisfiedres
+  - slot_was_set:
+    - service_type: ftl
+  - intent: document_requirement_info
+    entities:
+    - license_update: new
+    - service_type: ftl
+  - action: utter_select_trade_cat
+  - slot_was_set:
+    - sub_category: category
+  - intent: sub_service_category
+    entities:
+    - sub_category: category
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - slot_was_set:
+    - service_type: ftl
+  - intent: document_requirement_info
+    entities:
+    - license_update: new
+    - service_type: ftl
+  - action: utter_select_trade_cat
+  - slot_was_set:
+    - sub_category: industries outside industrial area
+  - intent: sub_service_category
+    entities:
+    - sub_category: industries outside industrial area
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - slot_was_set:
+    - service_type: ftl
+  - intent: document_requirement_info
+    entities:
+    - license_update: new
+    - service_type: ftl
+  - action: utter_select_trade_cat
+  - slot_was_set:
+    - sub_category: dsiidc
+  - intent: sub_service_category
+    entities:
+    - sub_category: dsiidc
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - slot_was_set:
+    - service_type: ftl
+  - intent: document_requirement_info
+    entities:
+    - license_update: new
+    - service_type: ftl
+  - action: utter_select_trade_cat
+  - slot_was_set:
+    - sub_category: dsidc
+  - intent: sub_service_category
+    entities:
+    - sub_category: dsidc
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - slot_was_set:
+    - service_type: ftl
+  - intent: document_requirement_info
+    entities:
+    - license_update: new
+    - service_type: ftl
+  - action: utter_select_trade_cat
+  - slot_was_set:
+    - sub_category: built-up auction
+  - intent: sub_service_category
+    entities:
+    - sub_category: built-up auction
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - intent: document_requirement_info
+    entities:
+    - license_update: new
+    - service_type: ftl
+  - slot_was_set:
+    - service_type: ftl
+  - action: utter_select_trade_cat
+  - slot_was_set:
+    - sub_category: conforming industrial area
+  - intent: sub_service_category
+    entities:
+    - sub_category: conforming industrial area
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - slot_was_set:
+    - service_type: ftl
+  - intent: document_requirement_info
+    entities:
+    - license_update: surrender
+    - service_type: ftl
+  - action: utter_select_trade_cat
+  - slot_was_set:
+    - sub_category: none
+  - intent: sub_service_category
+    entities:
+    - sub_category: none
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - slot_was_set:
+    - service_type: ftl
+  - intent: document_requirement_info
+    entities:
+    - license_update: renewal
+    - service_type: ftl
+  - action: utter_select_trade_cat
+  - intent: sub_service_category
+    entities:
+    - sub_category: none
+  - slot_was_set:
+    - sub_category: none
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - slot_was_set:
+    - service_type: ftl
+  - intent: document_requirement_info
+    entities:
+    - license_update: amendment
+    - service_type: ftl
+  - action: utter_select_trade_cat
+  - slot_was_set:
+    - sub_category: None
+  - intent: sub_service_category
+    entities:
+    - sub_category: None
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_unsatisfiedres
+  - slot_was_set:
+    - service_type: f=vtl
+  - intent: document_requirement_info
+    entities:
+    - license_update: new
+    - service_type: f=vtl
+  - action: utter_select_trade_cat
+  - slot_was_set:
+    - sub_category: None
+  - intent: sub_service_category
+    entities:
+    - sub_category: None
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - slot_was_set:
+    - service_type: vtl
+  - intent: document_requirement_info
+    entities:
+    - license_update: new
+    - service_type: vtl
+  - action: utter_select_trade_cat
+  - slot_was_set:
+    - sub_category: horse buggy
+  - intent: sub_service_category
+    entities:
+    - sub_category: horse buggy
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - slot_was_set:
+    - service_type: vtl
+  - intent: document_requirement_info
+    entities:
+    - license_update: new
+    - service_type: vtl
+  - action: utter_select_trade_cat
+  - slot_was_set:
+    - sub_category: meat shop
+  - intent: sub_service_category
+    entities:
+    - sub_category: meat shop
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - slot_was_set:
+    - service_type: vtl
+  - intent: document_requirement_info
+    entities:
+    - license_update: new
+    - service_type: vtl
+  - action: utter_select_trade_cat
+  - slot_was_set:
+    - sub_category: meat processing unit
+  - intent: sub_service_category
+    entities:
+    - sub_category: meat processing unit
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_satisfiedres
+  - slot_was_set:
+    - service_type: vtl
+  - intent: document_requirement_info
+    entities:
+    - license_update: new
+    - service_type: vtl
+  - action: utter_select_trade_cat
+  - slot_was_set:
+    - sub_category: None
+  - intent: sub_service_category
+    entities:
+    - sub_category: None
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - slot_was_set:
+    - sub_category: meat processing unit
+  - intent: sub_service_category
+    entities:
+    - sub_category: meat processing unit
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - slot_was_set:
+    - service_type: gtl
+  - intent: document_requirement_info
+    entities:
+    - license_update: new
+    - service_type: gtl
+  - action: utter_select_trade_cat
+  - slot_was_set:
+    - sub_category: None
+  - intent: sub_service_category
+    entities:
+    - sub_category: None
+  - action: action_get_document_requirements
+  - action: utter_did_that_help
+  - intent: about_trade_categories
+  - action: utter_service_name
+  - slot_was_set:
+    - service_type: VTL
+  - intent: services
+    entities:
+    - service_type: VTL
+  - action: action_get_trade_categories
+  - action: utter_did_that_help
+  - slot_was_set:
+    - service_type: vtl
+  - intent: document_requirement_info
+    entities:
+    - license_update: new
+    - service_type: vtl
+  - action: utter_select_trade_cat
+  - intent: about_trade_categories
+  - action: utter_service_name
+  - slot_was_set:
+    - service_type: FTL
+  - intent: services
+    entities:
+    - service_type: FTL
+  - action: utter_select_trade_cat
+  - slot_was_set:
+    - service_type: FTL
+  - intent: services
+    entities:
+    - service_type: FTL
+  - action: utter_select_trade_cat
+  - intent: about_trade_categories
+  - action: utter_service_name
+  - slot_was_set:
+    - service_type: FTL
+  - intent: services
+    entities:
+    - service_type: FTL
+  - action: action_get_trade_categories
+  - action: utter_did_that_help
+  - intent: about_trade_categories
+  - action: utter_service_name
+  - slot_was_set:
+    - service_type: HTL
+  - intent: services
+    entities:
+    - service_type: HTL
+  - action: action_get_trade_categories
+  - action: utter_did_that_help
+  - intent: about_trade_categories
+  - action: utter_service_name
+  - slot_was_set:
+    - service_type: VTL
+  - intent: services
+    entities:
+    - service_type: VTL
+  - action: action_get_trade_categories
+  - action: utter_did_that_help
+  - slot_was_set:
+    - service_type: vtl
+  - intent: about_trade_categories
+    entities:
+    - service_type: vtl
+  - action: action_get_trade_categories
+  - action: utter_did_that_help
+  - slot_was_set:
+    - service_type: gtl
+  - intent: about_trade_categories
+    entities:
+    - service_type: gtl
+  - action: action_get_trade_categories
+  - action: utter_did_that_help
+  - intent: user_registration
+  - action: utter_icanhelp
+  - action: utter_servicespagelink
+  - action: utter_selectservice
+  - action: utter_regiteredornot
+  - intent: deny
+  - action: utter_registeredno
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_satisfiedres
+  - slot_was_set:
+    - service_type: vtl
+  - intent: about_service
+    entities:
+    - service_type: vtl
+  - action: action_get_service_about
+  - action: utter_did_that_help
