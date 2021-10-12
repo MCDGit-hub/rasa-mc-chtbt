@@ -35,6 +35,8 @@ intents:
     use_entities: true
 - apply_for_license:
     use_entities: true
+- get_fee_info:
+    use_entities: true
 entities:
 - service_type
 - license_update
@@ -62,8 +64,6 @@ responses:
       title: GTL (Gen. Trade / Storage Licence)
     - payload: VTL
       title: VTL (Veterinary Licence)
-    - payload: HTL
-      title: HTL (Health Trade Licence)
     - payload: FTL
       title: FTL (Factory Licence)
     text: Please state the name of the service eg. **HTL**,**VTL** etc.
@@ -140,5 +140,6 @@ actions:
 - action_get_trade_categories
 - action_get_document_requirements
 - action_get_steps_to_apply_licence
+- action_get_fee_info
 forms: {}
 e2e_actions: []

@@ -132,7 +132,6 @@ nlu:
     - [conforming industrial area](sub_category)
     - [DDA/DSIDC/DI BUILT-UP AUCTION/ALOTTED SHEDS](sub_category)
     - [DSIDC](sub_category)
-    - [DDA](sub_category)
     - [DI BUILT-UP AUCTION](sub_category)
     - [ALOTTED SHEDS](sub_category)
     - [INDUSTRIES OUTSIDE INDUSTRIAL AREA](sub_category)
@@ -157,3 +156,11 @@ nlu:
     - help me apply for a license?
     - what do i have to do for [GTL](service_type) license?
     - [GTL](service_type) application?
+
+- intent: get_fee_info
+  examples: |
+    - what is the fee structure for [GTL](service_type)
+    - show me fee structure for [GTL](service_type)?
+    - fees and charges for [GTL](service_type) license?
+    - [GTL](service_type) fees & charges?
+    - [GTL](service_type) license charges?
