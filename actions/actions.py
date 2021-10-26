@@ -12,6 +12,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
+from actions import DataConstants
 from actions.DocRequirementFinder import DocRequirementFinder
 from actions.McdData import McdData
 
@@ -28,7 +29,11 @@ class ActionServiceAbout(Action):
 
         service_info_dat = mcd_data.get_service_about_data()
 
-        service_fullform,service_info = service_info_dat[service_name]['fullform'],\
+        service_fullform = None
+        service_info = None
+
+        if(service_name in service_info_dat.keys()):
+            service_fullform,service_info = service_info_dat[service_name]['fullform'],\
                                         service_info_dat[service_name]['info'] if service_name in service_info_dat.keys() else None
 
         if(service_info != None):
@@ -68,6 +73,7 @@ class ActionGetTradeCategories(Action):
         return []
 
 class ActionGetDocReq(Action):
+    # MIGHT BE CORPORATION INFLUENCED
     def name(self) -> Text:
         return "action_get_document_requirements"
 
@@ -102,7 +108,72 @@ class ActionGetApplySteps(Action):
         service_step_dat = mcd_data.get_steps_to_apply()
 
         if(service_name in service_step_dat.keys()):
-            response_msg = "Please follow the steps below to apply for {}:\n{}".format(service_name, service_step_dat[service_name])
+            response_msg = "Please follow the steps below to apply for NEW {} License:\n{}".format(service_name, service_step_dat[service_name])
+        else:
+             response_msg = "Couldn't find {} in our services. Please make sure you have typed the name correctly!".format(service_name)
+
+        dispatcher.utter_message(text=response_msg)
+
+        return []
+
+class ActionGetApplyStepsAmendmentSurrenderRenewal(Action):
+    def name(self) -> Text:
+        return "action_get_steps_to_apply_for_amendment_surrender_renewal"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        service_name = str(tracker.get_slot("service_type")).upper()
+        license_update_type = str(tracker.get_slot("license_update")).upper()
+
+        service_step_dat = mcd_data.get_amendment_renewal_surrender_process_steps()
+
+        if(service_name in service_step_dat.keys()):
+            if(license_update_type in service_step_dat[service_name].keys()):
+                response_msg = "Please follow the steps below to apply for {} of License in {}:\n{}".format(license_update_type,service_name,service_step_dat[service_name][license_update_type])
+            else:
+                response_msg = "Couldn't find {} in License Types. Please make sure you have typed the name correctly!".format(
+                    license_update_type)
+        else:
+            response_msg = "Couldn't find steps for {} of license in {}. Please make sure you have typed the name correctly!".format(service_step_dat[service_name][license_update_type],service_name)
+
+        dispatcher.utter_message(text=response_msg)
+
+        return []
+
+class ActionGetStepsToSubmitDeficiency(Action):
+    def name(self) -> Text:
+        return "action_get_steps_to_submit_deficiency"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        service_name = str(tracker.get_slot("service_type")).upper()
+
+        service_step_dat = mcd_data.get_steps_to_submit_deficiency()
+
+        if(service_name in service_step_dat.keys()):
+            response_msg = "Please follow the steps below to Submit Deficiency in {}:\n{}".format(service_name, service_step_dat[service_name])
+        else:
+             response_msg = "Couldn't find {} in our services. Please make sure you have typed the name correctly!".format(service_name)
+
+        dispatcher.utter_message(text=response_msg)
+
+        return []
+
+class ActionGetStepsToSearchLegacyRecord(Action):
+    def name(self) -> Text:
+        return "action_get_steps_to_search_legacy_record"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        service_name = str(tracker.get_slot("service_type")).upper()
+
+        service_step_dat = mcd_data.get_steps_to_search_for_legacy_record()
+
+        if(service_name in service_step_dat.keys()):
+            response_msg = "Please follow the steps below to Search for Legacy Record in {}:\n{}".format(service_name, service_step_dat[service_name])
         else:
              response_msg = "Couldn't find {} in our services. Please make sure you have typed the name correctly!".format(service_name)
 
@@ -111,6 +182,7 @@ class ActionGetApplySteps(Action):
         return []
 
 class ActionFeeInfo(Action):
+    # CORPORATION INFLUENCED
     def name(self) -> Text:
         return "action_get_fee_info"
 
@@ -119,11 +191,12 @@ class ActionFeeInfo(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         service_name = str(tracker.get_slot("service_type")).upper()
 
-        # if(service_info != None):
-        response_msg = "Text with an image"
-        # else:
-        #     response_msg = "Couldn't find {} in our services. Please make sure you have typed the name correctly!".format(service_name)
-
-        dispatcher.utter_message(text=response_msg, image="/aduck.jpg")
-
-        return []
+        #SDMC example
+        if(service_name == "VTL"):
+            response_msg = "Click on the link below for Fees & Charges for VTL SDMC.\nLINK: "+DataConstants.vtl_sdmc_fee_structure_link
+            dispatcher.utter_message(text=response_msg)
+            return []
+        else:
+            response_msg = "Couldn't find fee & charges for {} in our services. Please make sure you have typed the name correctly!".format(service_name)
+            dispatcher.utter_message(text=response_msg)
+            return []
