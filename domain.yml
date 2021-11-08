@@ -79,7 +79,7 @@ responses:
       title: Surrender of Licence
     text: Please state the name of Licence Type eg. **New**, **Amendment** etc.
   utter_greet:
-  - text: Hi! I am a chatbot built by **Municipal Corporation, Delhi**. How may i help youuuu?
+  - text: Hi! I am a chatbot built by **Municipal Corporation, Delhi**. How may i help you?
   utter_select_trade_cat:
   - buttons:
     - payload: None
